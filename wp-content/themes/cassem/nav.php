@@ -3,7 +3,7 @@
         <img src="<?php echo get_template_directory_uri(); ?>/images/logo-cassem.png"/>
     </div>
     <div class="col-11 grid-center grid-middle">
-        <ul class="menu col-10">
+        <ul class="menu col-11" data-push-left="off-1">
             <li><a href="#main">Inicio</a></li>
             <li><a href="#cassem">Cassem</a></li>
             <li><a href="#directivos">Directivos</a></li>

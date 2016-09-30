@@ -1,60 +1,25 @@
 @import 'mixin.scss';
 
 @font-face {
-  font-family: 'DINRegular';
-  src: url('../fonts/din-regular-webfont.eot');
-  src: url('../fonts/din-regular-webfont.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/din-regular-webfont.woff') format('woff'),
-  url('../fonts/din-regular-webfont.ttf') format('truetype'),
-  url('../fonts/din-regular-webfont.svg#dinregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-@font-face {
-  font-family: 'DINNeuzeitGroteskStd-Light';
-  src: url('../fonts/DINNeuzeitGroteskStd-Light.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/DINNeuzeitGroteskStd-Light.otf') format('opentype'),
-  url('../fonts/DINNeuzeitGroteskStd-Light.woff') format('woff'),
-  url('../fonts/DINNeuzeitGroteskStd-Light.ttf') format('truetype'),
-  url('../fonts/DINNeuzeitGroteskStd-Light.svg#DINNeuzeitGroteskStd-Light') format('svg');
+  font-family: 'DINPro-Light';
+  src: url('../fonts/DINPro-Light.otf'),
+  url('../fonts/DINPro-Light.woff') format('woff'),
+  url('../fonts/DINPro-Light.ttf') format('truetype'),
+  url('../fonts/DINPro-Light.svg#DINPro-Light') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'DINNeuzeitGroteskStd-BdCond';
-  src: url('../fonts/DINNeuzeitGroteskStd-BdCond.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/DINNeuzeitGroteskStd-BdCond.otf')  format('opentype'),
-  url('../fonts/DINNeuzeitGroteskStd-BdCond.woff') format('woff'),
-  url('../fonts/DINNeuzeitGroteskStd-BdCond.ttf')  format('truetype'),
-  url('../fonts/DINNeuzeitGroteskStd-BdCond.svg#DINNeuzeitGroteskStd-BdCond') format('svg');
+  font-family: 'DINPro-Medium';
+  src: url('../fonts/DINPro-Medium.otf'),
+  url('../fonts/DINPro-Medium.woff') format('woff'),
+  url('../fonts/DINPro-Medium.ttf') format('truetype'),
+  url('../fonts/DINPro-Medium.svg#DINPro-Medium') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'DINMittelschriftStd';
-  src: url('../fonts/DINMittelschriftStd.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/DINMittelschriftStd.otf')  format('opentype'),
-  url('../fonts/DINMittelschriftStd.woff') format('woff'),
-  url('../fonts/DINMittelschriftStd.ttf')  format('truetype'),
-  url('../fonts/DINMittelschriftStd.svg#DINMittelschriftStd') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'DINEngschriftStd';
-  src: url('../fonts/DINEngschriftStd.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/DINEngschriftStd.otf')  format('opentype'),
-  url('../fonts/DINEngschriftStd.woff') format('woff'),
-  url('../fonts/DINEngschriftStd.ttf')  format('truetype'),
-  url('../fonts/DINEngschriftStd.svg#DINEngschriftStd') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
 
 html, body {
   margin: 0;
@@ -62,6 +27,7 @@ html, body {
   width: 100%;
   height: 100%;
   background: #00425F;
+  font-family: DINPro-Light;
 }
 
 .wrapper {
@@ -79,7 +45,7 @@ html, body {
   &:before {
     content: "";
     position: absolute;
-    right: (-10em/16);
+    right: (-8em/16);
     top: 50%;
     transform: translateY(-50%);
     width: 0;
@@ -92,16 +58,45 @@ html, body {
 
 .menu-wrapper {
   background: #EBEBEB;
+  position: relative;
+  &:before{
+    content: "";
+    right: (-29em/16);
+    top: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-style: solid;
+    border-width: (53em/16) (30em/16) 0 0;
+    border-color: #EBEBEB transparent transparent transparent;
+  }
+
+
   .menu {
     li {
       float: left;
-      margin-right: 3%;
+      margin-right: 2.5%;
       a {
         text-transform: uppercase;
         text-decoration: none;
         color: #000000;
-        font-family: DINMittelschriftStd;
-        font-size: (15em/16);
+        font-size: (14em/16);
+        position: relative;
+        &:hover{
+          &:before{
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: (1em/14);
+            background: #7C9CAB;
+            bottom: (-2em/14);
+          }
+        }
+      }
+
+      &:last-child{
+        margin-right: 0;
       }
     }
   }
@@ -112,18 +107,73 @@ html, body {
   color: #fff;
   .content{
     background: url("../images/home-bg-transparent.png") no-repeat left bottom;
-    padding-bottom: (250em/16);
+    padding-bottom: (270em/16);
     margin-bottom: (105em/16);
     .site-title{
       font-size: (80em/16);
       margin-top: (40em/80);
-      font-family: DINRegular;
     }
     .site-slogan {
       > p {
-        font-family: DINRegular;
+        margin: 0;
         font-size: (25em/16);
       }
     }
   }
+}
+
+
+.content{
+  .section-title{
+    font-size: (50em/16);
+    margin-top: (100em/40);
+    color: #00425F;
+    position: relative;
+    text-transform: uppercase;
+  }
+  .text {
+    border-top:2px dotted #7C9DAB;
+    > p {
+      font-size: (16em/16);
+      color:#232323;
+    }
+  }
+}
+
+
+.cassem{
+  background: url("../images/cassem-bg-transparent.png") #EBEBEB no-repeat left top;
+  min-height:(720em/16);
+}
+
+
+.directives{
+  background: url("../images/directivos-bg-transparent.png") #EBEBEB no-repeat left top;
+  min-height:(720em/16);
+
+  .section-title{
+    margin-top: (70em/40);
+  }
+
+  .col-title{
+    margin-top: (50em/16);
+  }
+}
+
+.mission{
+  background: url("../images/mision-bg-transparent.png") #EBEBEB no-repeat left top;
+  min-height:(720em/16);
+  .section-title{
+    color: #fff;
+  }
+  .text {
+    > p {
+      color: #fff;
+    }
+  }
+}
+
+.entities{
+  background: url("../images/entidades-bg-transparent.png") #EBEBEB no-repeat left top;
+  min-height:(720em/16);
 }
