@@ -5,11 +5,13 @@ $cassem = new WP_Query('page_id=7');
 $directives = new WP_Query('page_id=11');
 $mission = new WP_Query('page_id=21');
 $entities = new WP_Query('page_id=25');
+$agreement = new WP_Query('page_id=36');
+$contact = new WP_Query('page_id=48');
 ?>
 <body>
 <div id="main" class="clearfix wrapper">
     <section id="home" class="grid home">
-        <header class="col-6 col-top grid header" data-push-left="off-3">
+        <header id="header" class="header">
             <?php include "nav.php" ?>
         </header>
         <div class="col-9 col-top grid content" data-push-left="off-3">
@@ -27,8 +29,8 @@ $entities = new WP_Query('page_id=25');
         <div class="col-9 col-top grid content" data-push-left="off-3">
             <?php if ($cassem->have_posts()):
                 while ($cassem->have_posts()):$cassem->the_post(); ?>
-                    <h1 class="col-12 section-title"><?php the_title(); ?></h1>
-                    <div class="col-6 text">
+                    <h1 class="col-7 section-title"><?php the_title(); ?></h1>
+                    <div class="col-7 text">
                         <?php the_content(); ?>
                     </div>
                 <?php endwhile; endif; ?>
@@ -39,7 +41,7 @@ $entities = new WP_Query('page_id=25');
         <div class="col-9 col-top grid content" data-push-left="off-3">
             <?php if ($directives->have_posts()):
                 while ($directives->have_posts()):$directives->the_post(); ?>
-                    <h1 class="col-12 section-title"><?php the_title(); ?></h1>
+                    <h1 class="col-9 section-title"><?php the_title(); ?></h1>
                     <div class="col-9 grid grid-spaceBetween text">
                         <div class="col-5">
                             <h1 class="col-title">COMISIÓN DIRECTIVA</h1>
@@ -62,7 +64,7 @@ $entities = new WP_Query('page_id=25');
         <div class="col-9 col-top grid content" data-push-left="off-3">
             <?php if ($mission->have_posts()):
                 while ($mission->have_posts()):$mission->the_post(); ?>
-                    <h1 class="col-12 section-title"><?php the_title(); ?></h1>
+                    <h1 class="col-8 section-title"><?php the_title(); ?></h1>
                     <div class="col-8 text">
                         <?php the_content(); ?>
                     </div>
@@ -74,15 +76,59 @@ $entities = new WP_Query('page_id=25');
         <div class="col-9 col-top grid content" data-push-left="off-3">
             <?php if ($entities->have_posts()):
                 while ($entities->have_posts()):$entities->the_post(); ?>
-                    <h1 class="col-12 section-title"><?php the_title(); ?></h1>
-                    <div class="col-6 text">
+                    <h1 class="col-9 section-title"><?php the_title(); ?></h1>
+                    <div class="col-9 text gallery">
+                        <?php
+                            $images = get_field('entities_logos');
+                            if ($images) {
+                                foreach ($images as $image) {
+                                    echo '<img src="' . $image["url"] . '"/>';
+                                }
+                            }
+                        ?>
+                    </div>
+                <?php endwhile; endif; ?>
+        </div>
+    </section>
+    <section id="convenios" class="grid agreement">
+        <div class="col-9 col-top grid content" data-push-left="off-3">
+            <?php if ($agreement->have_posts()):
+                while ($agreement->have_posts()):$agreement->the_post(); ?>
+                    <h1 class="col-8 section-title"><?php the_title(); ?></h1>
+
+                    <h2 class="col-8 section-subtitle">
+                        <?php echo the_field('subtitle') ?>
+                    </h2>
+                    <div class="col-8 text">
                         <?php the_content(); ?>
                     </div>
                 <?php endwhile; endif; ?>
         </div>
     </section>
-
-
+    <section id="contacto" class="grid contact">
+        <div class="col-9 col-top grid content" data-push-left="off-3">
+            <?php if ($contact->have_posts()):
+                while ($contact->have_posts()):$contact->the_post(); ?>
+                    <h1 class="col-5 section-title"><?php the_title(); ?></h1>
+                    <div class="col-8 grid text">
+                        <div class="col-7">
+                            <?php the_content(); ?>
+                        </div>
+                    </div>
+                <?php endwhile; endif; ?>
+        </div>
+        <div class="col-12 col-bottom">
+            <div class="col-12 logo-footer">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/logo-footer.png"/>
+            </div>
+            <div class="col-12 social">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/social-logos.png"/>
+            </div>
+            <div class="col-12 copy">
+                ©Copyright CASSEM 2014. All rights reserved.
+            </div>
+        </div>
+    </section>
 </div>
 <div class="wrapper">
     <?php get_footer(); ?>
