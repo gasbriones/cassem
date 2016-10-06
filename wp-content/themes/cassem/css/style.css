@@ -149,6 +149,9 @@ html, body {
     padding-right: 2.8125em;
     height: 21.5em;
     overflow: auto; }
+    .agreement .text .colums {
+      color: #00425f;
+      font-size: 0.875em; }
   .agreement .section-subtitle {
     margin: 1.875em 0 0.625em;
     padding-left: 3.1875em;

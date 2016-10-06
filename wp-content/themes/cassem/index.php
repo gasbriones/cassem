@@ -94,13 +94,21 @@ $contact = new WP_Query('page_id=48');
         <div class="col-9 col-top grid content" data-push-left="off-3">
             <?php if ($agreement->have_posts()):
                 while ($agreement->have_posts()):$agreement->the_post(); ?>
-                    <h1 class="col-8 section-title"><?php the_title(); ?></h1>
+                    <h1 class="col-9 section-title"><?php the_title(); ?></h1>
 
-                    <h2 class="col-8 section-subtitle">
+                    <h2 class="col-9 section-subtitle">
                         <?php echo the_field('subtitle') ?>
                     </h2>
-                    <div class="col-8 text">
+                    <div class="col-9 text">
                         <?php the_content(); ?>
+                        <div class="grid grid-spaceBetween">
+                            <div class="col-5 colums">
+                                <?php echo the_field('col_derecha') ?>
+                            </div>
+                            <div class="col-5 colums">
+                                <?php echo the_field('col_izquierda') ?>
+                            </div>
+                        </div>
                     </div>
                 <?php endwhile; endif; ?>
         </div>
